@@ -1,14 +1,17 @@
 version: 2
 models:
   - name: dim_listings_cleansed
+    description: Cleansed table that contains AirBnB listings
     columns:
 
     - name: listing_id
+      description: Primary key for a listing
       tests:
         - unique
         - not_null
 
     - name: host_id
+      description: Host's id that references host table
       tests:
         - not_null
         - relationships:
@@ -16,9 +19,13 @@ models:
             field: host_id
 
     - name: room_type
+      description: Type of the apartment/room
       tests:
         - accepted_values:
             values: [ 'Entire home/apt',
                       'Private room',
                       'Shared room',
                       'Hotel room']
+    - name: minimum_nights
+      tests:
+        - positive_value
