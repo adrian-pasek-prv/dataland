@@ -35,9 +35,6 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   my_first_dbt_project:
     +materialized: view
-    # this post hook will execute for every model where {{ this }} is the current model
-    +post-hook:
-      - "GRANT SELECT ON {{ this }} TO ROLE REPORTER"
     dim:
       +materialized: table
     src:
